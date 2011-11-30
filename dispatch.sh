@@ -22,11 +22,11 @@ start() {
 
   echo "Starting $SERVER_SCRIPT"
   cd $SERVER_DIR
-  supervisor $SERVER_SCRIPT >> $SERVER_LOG 2>$CLIENT_ERR &
+  supervisor $SERVER_SCRIPT >> $SERVER_LOG 2>$SERVER_ERR &
 
   echo "Starting $CLIENT_SCRIPT"
   cd $CLIENT_DIR
-  supervisor $CLIENT_SCRIPT >> $CLIENT_LOG 2>$SERVER_ERR &
+  supervisor $CLIENT_SCRIPT >> $CLIENT_LOG 2>$CLIENT_ERR &
 }
 
 stop() {
