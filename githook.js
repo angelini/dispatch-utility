@@ -3,6 +3,7 @@ var PORT = 8060;
 
 // Requires
 var connect = require('connect');
+var spawn = require('child_process').spawn;
 
 var router = connect.router(function(app) {
   
@@ -19,12 +20,10 @@ var router = connect.router(function(app) {
     res.end();
   });
 
-  app.post('/client', function(req, res) {
-    console.log('client-->', req.body);
-  });
-
-  app.post('/server', function(req, res) {
-    console.log('server-->', req.body);
+  app.post('/update', function(req, res) {
+    if(req.body && req.body.payload) {
+      var dispatch = spawn(__dirname + '/dispatch.sh', ['restart']);
+    }
   });
 
 });
