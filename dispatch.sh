@@ -10,17 +10,23 @@ REDIS_CONF="$DIR/redis.conf"
 CLIENT_SCRIPT="server.js"
 SERVER_SCRIPT="dispatch.js"
 
+CLIENT_LOG="$DIR/client.log"
+SERVER_LOG="$DIR/server.log"
+
+CLIENT_ERR="$DIR/client.err"
+SERVER_ERR="$DIR/server.err"
+
 start() {
   echo "Starting redis-server $REDIS_CONF"
   redis-server $REDIS_CONF
 
   echo "Starting $SERVER_SCRIPT"
   cd $SERVER_DIR
-  supervisor $SERVER_SCRIPT &
+  supervisor $SERVER_SCRIPT >> $SERVER_LOG 2>$CLIENT_ERR &
 
   echo "Starting $CLIENT_SCRIPT"
   cd $CLIENT_DIR
-  supervisor $CLIENT_SCRIPT
+  supervisor $CLIENT_SCRIPT >> $CLIENT_LOG 2>$SERVER_ERR &
 }
 
 stop() {
