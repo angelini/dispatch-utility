@@ -20,18 +20,18 @@ var router = connect.router(function(app) {
   });
 
   app.post('/client', function(req, res) {
-
+    console.log('client-->', req.body);
   });
 
   app.post('/server', function(req, res) {
-
+    console.log('server-->', req.body);
   });
 
 });
 
 var server = connect.createServer();
 
-server.use(connect.bodyParse());
+server.use(connect.bodyParser());
 server.use(router);
 server.list(PORT);
 
