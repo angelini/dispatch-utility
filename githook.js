@@ -33,6 +33,6 @@ var server = connect.createServer();
 
 server.use(connect.bodyParser());
 server.use(router);
-server.list(PORT);
+server.listen(PORT);
 
 console.log('Updater Ready');
