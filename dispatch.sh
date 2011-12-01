@@ -30,16 +30,19 @@ start() {
 
   echo "Starting $SERVER_SCRIPT"
   cd $SERVER_DIR
+  git pull
   npm install
   supervisor $SERVER_SCRIPT >> $SERVER_LOG 2>$SERVER_ERR &
 
   echo "Starting $CLIENT_SCRIPT"
   cd $CLIENT_DIR
+  git pull
   npm install
   supervisor $CLIENT_SCRIPT >> $CLIENT_LOG 2>$CLIENT_ERR &
 
   echo "Starting $UPDATE_SCRIPT"
   cd $UPDATE_DIR
+  git pull
   npm install
   supervisor $UPDATE_SCRIPT >> $UPDATE_LOG 2>$UPDATE_ERR &
 }
