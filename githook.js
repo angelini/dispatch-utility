@@ -22,7 +22,7 @@ var router = connect.router(function(app) {
 
   app.post('/update', function(req, res) {
     if(req.body && req.body.payload) {
-      var dispatch = spawn(__dirname + '/dispatch.sh', ['restart']);
+      var dispatch = spawn(__dirname + '/dispatch.sh', ['restart', 'prod']);
     }
   });
 

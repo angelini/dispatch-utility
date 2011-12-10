@@ -4,6 +4,7 @@
 
 DIR="$( cd "$( dirname "$0" )" && pwd )"
 LOGS="$DIR/logs"
+ENV=$2
 
 CLIENT_DIR="$DIR/../dispatch-client"
 SERVER_DIR="$DIR/../dispatch-server"
@@ -23,6 +24,11 @@ SERVER_ERR="$LOGS/server.err"
 UPDATE_ERR="$LOGS/update.err"
 
 start() {
+  #Set environment
+  echo $ENV
+  export NODE_ENV=$ENV
+  echo $NODE_ENV
+
   mkdir -p $LOGS
 
   echo "Starting redis-server $REDIS_CONF"
