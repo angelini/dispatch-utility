@@ -25,9 +25,7 @@ UPDATE_ERR="$LOGS/update.err"
 
 start() {
   #Set environment
-  echo $ENV
   export NODE_ENV=$ENV
-  echo $NODE_ENV
 
   mkdir -p $LOGS
 
